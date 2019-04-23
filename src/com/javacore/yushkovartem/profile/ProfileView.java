@@ -19,11 +19,11 @@ public class ProfileView extends CompositeView {
         for(BaseView view : children){
             view.draw();
         }
-        canvas.drawText("Criminal Profile view");
-
-        canvas.drawText("ID: " + ((ProfileModel)model).getId());
-        canvas.drawText("Name: " + ((ProfileModel)model).getName());
-        canvas.drawText("Active: " + ((ProfileModel)model).getName());
+//        canvas.drawText("Criminal Profile view");
+//
+//        canvas.drawText("ID: " + ((ProfileModel)model).getId());
+//        canvas.drawText("Name: " + ((ProfileModel)model).getName());
+//        canvas.drawText("Active: " + ((ProfileModel)model).getName());
     }
 
     public void init() {

@@ -2,6 +2,7 @@ package com.javacore.yushkovartem;
 
 import com.javacore.yushkovartem.command.ACommand;
 import com.javacore.yushkovartem.command.CommandRegistry;
+import com.javacore.yushkovartem.common.ConsoleCanvas;
 import com.javacore.yushkovartem.db.DataBase;
 import com.javacore.yushkovartem.db.Record;
 import com.javacore.yushkovartem.db.Table;
@@ -32,14 +33,19 @@ public class Application {
     static ApplicationState currentState;
 
     public static void main(String[] args) {
-        String query = "SELECT id, firstName, lastName FROM Criminals";
 
-        Pattern p  = Pattern.compile(OP_GROUP + SPACE + FLD_GROUP + SPACE + FROM_GROUP + SPACE + TBL_GROUP);
-        Matcher matcher = p.matcher(query);
-        if (matcher.find()) {
-            System.out.println("Number of groups: " + matcher.groupCount());
+        ConsoleCanvas canvas = new ConsoleCanvas(50,50);
+        canvas.drawCircleAt(25,25,10);
 
-        }
+
+//        String query = "SELECT id, firstName, lastName FROM Criminals";
+//
+//        Pattern p  = Pattern.compile(OP_GROUP + SPACE + FLD_GROUP + SPACE + FROM_GROUP + SPACE + TBL_GROUP);
+//        Matcher matcher = p.matcher(query);
+//        if (matcher.find()) {
+//            System.out.println("Number of groups: " + matcher.groupCount());
+//
+//        }
     }
 
     public static void printList(List<String> list){

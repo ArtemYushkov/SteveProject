@@ -30,7 +30,7 @@ public class ConsoleCanvas extends Canvas {
         for (int i=0; i < height; i++){
             System.out.print("\n");
             for (int j = 0; j < width; j++) {
-                System.out.print(pixes[i][j]);
+                System.out.print(pixes[i][j] + " ");
             }
         }
     }
@@ -40,8 +40,23 @@ public class ConsoleCanvas extends Canvas {
     }
 
     @Override
-    public void drawText(String text) {
-        System.out.println(text);
+    public void drawTextAt(String text, int x, int y, int endX, int endY) {
+        char[] cText = text.toCharArray();
+        int linePointer = x;
+        int rowPointer = y;
+        for (char c : cText) {
+            setSymbolAt(linePointer, rowPointer, c);
+            linePointer++;
+            if (linePointer == endX) {
+                linePointer = x;
+                rowPointer++;
+            }
+            if (rowPointer > endY) {
+                System.out.println("Ошибка! Текст слишком большой");
+                break;
+            }
+        }
+        draw();
     }
 
 
@@ -73,12 +88,30 @@ public class ConsoleCanvas extends Canvas {
         if (x + r > width || x - r < 0 || y + r > height || y - r < 0){
             System.out.println("Error! Make your circle smaller, or change coordinates!");
         } else{
-            for (int i = 1; i <= r; i++) {
-                pixes[y + r - i][x - i] = '#';
-                pixes[y + r - i][x + i] = '#';
-                pixes[y - r + i][x - i] = '#';
-                pixes[y - r + i][x + i] = '#';
+            int x1 = 0;
+            int y1 = r;
+            float dp = 3 - 2*r;
+            while(x1 <= y1){
+                if (dp <= 0){
+                    dp += (4*x1) + 6;
+                } else {
+                    dp += 4*(x1 - y1) + 10;
+                    y1--;
+                }
+
+                x1++;
+
+                setSymbolAt(x1+x,y1+y,'#');
+                setSymbolAt(x1+x,y-y1,'#');
+                setSymbolAt(x-x1,y1+y,'#');
+                setSymbolAt(x-x1,y-y1,'#');
+                setSymbolAt(x+y1,y+x1,'#');
+                setSymbolAt(x+y1,y-x1,'#');
+                setSymbolAt(x-y1,y+x1,'#');
+                setSymbolAt(x-y1,y-x1,'#');
+
             }
+
             draw();
         }
     }
