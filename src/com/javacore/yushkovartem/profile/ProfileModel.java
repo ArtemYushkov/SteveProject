@@ -1,7 +1,7 @@
 package com.javacore.yushkovartem.profile;
 
 import com.javacore.yushkovartem.common.BaseModel;
-import com.javacore.yushkovartem.db.Record;
+import com.javacore.yushkovartem.dbOld.Record;
 
 import java.util.Date;
 

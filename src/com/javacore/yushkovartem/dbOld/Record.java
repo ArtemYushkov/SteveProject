@@ -1,4 +1,4 @@
-package com.javacore.yushkovartem.db;
+package com.javacore.yushkovartem.dbOld;
 
 import java.util.ArrayList;
 import java.util.Arrays;

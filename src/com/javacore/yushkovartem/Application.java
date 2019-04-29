@@ -1,19 +1,11 @@
 package com.javacore.yushkovartem;
 
-import com.javacore.yushkovartem.command.ACommand;
-import com.javacore.yushkovartem.command.CommandRegistry;
 import com.javacore.yushkovartem.common.ConsoleCanvas;
-import com.javacore.yushkovartem.db.DataBase;
-import com.javacore.yushkovartem.db.Record;
-import com.javacore.yushkovartem.db.Table;
+import com.javacore.yushkovartem.db.DBApplication;
 import com.javacore.yushkovartem.state.ApplicationState;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Application {
 
@@ -36,9 +28,13 @@ public class Application {
 
     public static void main(String[] args) {
 
-        ConsoleCanvas canvas = new ConsoleCanvas(50,50);
-        canvas.drawCircleAt(25,25,10);
+        DBApplication.INSTANCE.start();
 
+
+
+//        ConsoleCanvas canvas = new ConsoleCanvas(50,50);
+//        canvas.drawCircleAt(25,25,10);
+//
 
 //        String query = "SELECT id, firstName, lastName FROM Criminals";
 //

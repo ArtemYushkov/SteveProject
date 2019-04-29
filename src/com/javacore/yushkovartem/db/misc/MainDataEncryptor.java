@@ -1,4 +1,6 @@
-package com.javacore.yushkovartem;
+package com.javacore.yushkovartem.db.misc;
+
+import com.javacore.yushkovartem.Application;
 
 public class MainDataEncryptor implements DataEncryptor {
     @Override
