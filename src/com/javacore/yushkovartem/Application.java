@@ -23,6 +23,8 @@ public class Application {
     public static final String FROM_GROUP = "(FROM)";
     public static final String TBL_GROUP = "([a-zA-Z]+)$";
 
+    public static final String DATA_ENCRYPTION_LEVEL = "LOW";
+
 
 
     public static final String ALLOWED_DOMAIN_NAMES = "^([a-zA-Z0-9]+\\.)+(com|de|ru)";
