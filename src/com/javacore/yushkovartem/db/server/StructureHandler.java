@@ -12,23 +12,21 @@ public class StructureHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
-        String filePath = "/Users/zstudent/IdeaProjects/Steve/database/structure/test.xml";
-        httpExchange.getResponseHeaders().put("Content-Type:", Arrays.asList(new String[]{"text/xml"}));
-
+        String filePath = "database/structure/test.xml";
         File file = new File(filePath);
+        long length = file.length();
+        httpExchange.getResponseHeaders().put("Content-Type:", Arrays.asList(new String[]{"text/xml"}));
+        httpExchange.sendResponseHeaders(200, length);
+
 
         byte[] bytesArray = new byte[(int) file.length()];
 
         FileInputStream fis = new FileInputStream(file);
-        fis.read(bytesArray); //read file into bytes[]
+        fis.read(bytesArray);
         fis.close();
 
-
         OutputStream os = httpExchange.getResponseBody();
-
         os.write(bytesArray);
-
-
         os.close();
 
     }
