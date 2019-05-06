@@ -1,6 +1,6 @@
-package com.javacore.yushkovartem.db.server;
+package com.javacore.yushkovartem.dbservice.server;
 
-import com.javacore.yushkovartem.db.DBApplication;
+import com.javacore.yushkovartem.dbservice.DBApplication;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -25,7 +25,7 @@ public enum DBServer {
 
     public void start() throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 10);
-        server.createContext("/db/state", new HttpHandler() {
+        server.createContext("/dbservice/state", new HttpHandler() {
             @Override
             public void handle(HttpExchange httpExchange) throws IOException {
                 String state = BAD_HTML.replace("{{state}}", DBApplication.INSTANCE.getStateName());
@@ -37,7 +37,7 @@ public enum DBServer {
             }
         });
 
-        server.createContext("/db/structure", new StructureHandler());
+        server.createContext("/dbservice/structure", new StructureHandler());
         server.start();
         String message = String.format("Server is running on port: %d", server.getAddress().getPort());
         System.out.println(message);

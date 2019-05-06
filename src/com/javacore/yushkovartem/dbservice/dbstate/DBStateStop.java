@@ -1,8 +1,8 @@
-package com.javacore.yushkovartem.db.dbstate;
+package com.javacore.yushkovartem.dbservice.dbstate;
 
-import com.javacore.yushkovartem.db.misc.DBConstants;
-import com.javacore.yushkovartem.db.misc.DataEncryptor;
-import com.javacore.yushkovartem.db.misc.Utils;
+import com.javacore.yushkovartem.dbservice.misc.DBConstants;
+import com.javacore.yushkovartem.dbservice.misc.DataEncryptor;
+import com.javacore.yushkovartem.dbservice.misc.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

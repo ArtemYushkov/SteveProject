@@ -1,4 +1,4 @@
-package com.javacore.yushkovartem.db.misc;
+package com.javacore.yushkovartem.dbservice.misc;
 
 import com.javacore.yushkovartem.Application;
 

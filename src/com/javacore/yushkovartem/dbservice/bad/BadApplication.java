@@ -1,6 +1,4 @@
-package com.javacore.yushkovartem.db.bad;
-
-import com.javacore.yushkovartem.db.bad.BadClass;
+package com.javacore.yushkovartem.dbservice.bad;
 
 public class BadApplication {
 

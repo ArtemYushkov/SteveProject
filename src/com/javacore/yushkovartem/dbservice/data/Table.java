@@ -1,7 +1,7 @@
-package com.javacore.yushkovartem.db.data;
+package com.javacore.yushkovartem.dbservice.data;
 
-import com.javacore.yushkovartem.db.misc.DataHandler;
-import com.javacore.yushkovartem.db.misc.Utils;
+import com.javacore.yushkovartem.dbservice.misc.DataHandler;
+import com.javacore.yushkovartem.dbservice.misc.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

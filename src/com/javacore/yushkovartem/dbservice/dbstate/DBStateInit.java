@@ -1,12 +1,12 @@
-package com.javacore.yushkovartem.db.dbstate;
+package com.javacore.yushkovartem.dbservice.dbstate;
 
-import com.javacore.yushkovartem.db.DBApplication;
-import com.javacore.yushkovartem.db.misc.DBConstants;
-import com.javacore.yushkovartem.db.misc.Utils;
-import com.javacore.yushkovartem.db.misc.DataHandler;
-import com.javacore.yushkovartem.db.data.Table;
-import com.javacore.yushkovartem.db.data.TableMetaData;
-import com.javacore.yushkovartem.db.server.DBServer;
+import com.javacore.yushkovartem.dbservice.DBApplication;
+import com.javacore.yushkovartem.dbservice.misc.DBConstants;
+import com.javacore.yushkovartem.dbservice.misc.Utils;
+import com.javacore.yushkovartem.dbservice.misc.DataHandler;
+import com.javacore.yushkovartem.dbservice.data.Table;
+import com.javacore.yushkovartem.dbservice.data.TableMetaData;
+import com.javacore.yushkovartem.dbservice.server.DBServer;
 
 public class DBStateInit extends DBState {
 

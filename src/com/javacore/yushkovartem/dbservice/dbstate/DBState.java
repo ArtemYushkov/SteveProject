@@ -1,4 +1,4 @@
-package com.javacore.yushkovartem.db.dbstate;
+package com.javacore.yushkovartem.dbservice.dbstate;
 
 public abstract class DBState {
 

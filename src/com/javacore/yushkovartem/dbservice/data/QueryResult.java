@@ -1,4 +1,4 @@
-package com.javacore.yushkovartem.db.data;
+package com.javacore.yushkovartem.dbservice.data;
 
 public class QueryResult {
     Status status;

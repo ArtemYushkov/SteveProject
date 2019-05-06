@@ -1,9 +1,7 @@
-package com.javacore.yushkovartem.db.server;
+package com.javacore.yushkovartem.dbservice.server;
 
-import com.javacore.yushkovartem.db.DBApplication;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import sun.misc.IOUtils;
 
 import java.io.*;
 import java.util.Arrays;

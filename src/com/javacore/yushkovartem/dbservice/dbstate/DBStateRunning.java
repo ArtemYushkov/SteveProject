@@ -1,6 +1,6 @@
-package com.javacore.yushkovartem.db.dbstate;
+package com.javacore.yushkovartem.dbservice.dbstate;
 
-import com.javacore.yushkovartem.db.DBApplication;
+import com.javacore.yushkovartem.dbservice.DBApplication;
 
 public class DBStateRunning extends DBState {
 

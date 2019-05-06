@@ -1,4 +1,4 @@
-package com.javacore.yushkovartem.db.bad;
+package com.javacore.yushkovartem.dbservice.bad;
 
 public class BadClass {
     private final String name;

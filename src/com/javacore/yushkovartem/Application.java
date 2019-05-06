@@ -1,9 +1,10 @@
 package com.javacore.yushkovartem;
 
-import com.javacore.yushkovartem.common.ConsoleCanvas;
-import com.javacore.yushkovartem.db.DBApplication;
+import com.javacore.yushkovartem.dbservice.DBApplication;
 import com.javacore.yushkovartem.state.ApplicationState;
+import com.javacore.yushkovartem.webservice.WebClientApplication;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,8 +29,11 @@ public class Application {
 
     public static void main(String[] args) {
 
-        DBApplication.INSTANCE.start();
-
+        try {
+            WebClientApplication.INSTANCE.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
 //        ConsoleCanvas canvas = new ConsoleCanvas(50,50);

@@ -1,10 +1,10 @@
-package com.javacore.yushkovartem.db;
+package com.javacore.yushkovartem.dbservice;
 
-import com.javacore.yushkovartem.db.data.QueryResult;
-import com.javacore.yushkovartem.db.dbstate.DBState;
-import com.javacore.yushkovartem.db.dbstate.DBStateInit;
-import com.javacore.yushkovartem.db.dbstate.DBStateRunning;
-import com.javacore.yushkovartem.db.dbstate.DBStateStop;
+import com.javacore.yushkovartem.dbservice.data.QueryResult;
+import com.javacore.yushkovartem.dbservice.dbstate.DBState;
+import com.javacore.yushkovartem.dbservice.dbstate.DBStateInit;
+import com.javacore.yushkovartem.dbservice.dbstate.DBStateRunning;
+import com.javacore.yushkovartem.dbservice.dbstate.DBStateStop;
 
 public enum DBApplication {
     INSTANCE;

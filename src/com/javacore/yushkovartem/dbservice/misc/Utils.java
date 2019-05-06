@@ -1,4 +1,4 @@
-package com.javacore.yushkovartem.db.misc;
+package com.javacore.yushkovartem.dbservice.misc;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
