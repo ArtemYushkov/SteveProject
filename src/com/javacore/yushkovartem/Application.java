@@ -1,5 +1,6 @@
 package com.javacore.yushkovartem;
 
+import com.javacore.yushkovartem.appserver.ServerApplication;
 import com.javacore.yushkovartem.dbservice.DBApplication;
 import com.javacore.yushkovartem.state.ApplicationState;
 import com.javacore.yushkovartem.webservice.WebClientApplication;
@@ -30,7 +31,8 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            WebClientApplication.INSTANCE.start();
+            //WebClientApplication.INSTANCE.start();
+            ServerApplication.INSTANCE.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
