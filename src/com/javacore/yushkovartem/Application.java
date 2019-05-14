@@ -31,8 +31,9 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            //WebClientApplication.INSTANCE.start();
+            WebClientApplication.INSTANCE.start();
             ServerApplication.INSTANCE.start();
+            DBApplication.INSTANCE.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

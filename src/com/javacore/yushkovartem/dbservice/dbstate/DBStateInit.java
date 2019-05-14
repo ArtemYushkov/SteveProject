@@ -10,9 +10,20 @@ import com.javacore.yushkovartem.dbservice.server.DBServer;
 
 public class DBStateInit extends DBState {
 
+    // <начало>КОСТЫЛИЩЕ!
+    public static Table table;
+
+    public static Table getTable() {
+        return table;
+    }
+    //<конец> КОСТЫЛИЩЕ
+
+
     public DBStateInit(String name) {
         super(name);
     }
+
+
 
     @Override
     public void enter() {
@@ -31,7 +42,11 @@ public class DBStateInit extends DBState {
             @Override
             public void handleFile(String filePath) {
                 TableMetaData metaData = TableMetaData.loadFromFile(filePath);
-                Table table = new Table(metaData);
+                //<начало>КОСТЫЛИЩЕ продолжение
+                table = new Table(metaData);
+                //<конец> КОСТЫЛИЩЕ продолжение
+
+                //Table table = new Table(metaData); //раскомментить. Для КОСТЫЛИЩА.
                 table.load();
             }
         });

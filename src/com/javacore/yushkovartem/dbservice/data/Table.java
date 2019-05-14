@@ -16,6 +16,12 @@ public class Table {
         rows = new ArrayList<>();
     }
 
+    //КОСТЫЛИЩЕ
+    public TableRow getRow (int id){
+        return rows.get(id);
+    }
+    //<конец>КОСТЫЛИЩЕ
+
     public void load() {
         Utils.readFileLineByLine(metaData.getPathToData(), new DataHandler() {
             @Override
