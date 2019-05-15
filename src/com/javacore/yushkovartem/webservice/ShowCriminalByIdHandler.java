@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class ShowCriminalByIdHandler implements HttpHandler {
 
-    public static final String HTML_FORMAT = "^/api/show[cC]riminal[bB]y[Ii]d/[0-9]+$";
+    public static final String SCBID_FORMAT = "^/api/show[cC]riminal[bB]y[Ii]d/[0-9]+$";
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
@@ -22,7 +22,7 @@ public class ShowCriminalByIdHandler implements HttpHandler {
         TableRow criminal;
 
 
-        if (path.matches(HTML_FORMAT)){
+        if (path.matches(SCBID_FORMAT)){
             String idString = path.split("/")[3];
             System.out.println(idString);
             id = Integer.parseInt(idString);

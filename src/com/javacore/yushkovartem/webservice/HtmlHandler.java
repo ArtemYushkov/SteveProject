@@ -15,7 +15,6 @@ public class HtmlHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
 
-
         String path = httpExchange.getRequestURI().getPath();
         String response = "";
         if (path.matches(HTML_FORMAT)) {

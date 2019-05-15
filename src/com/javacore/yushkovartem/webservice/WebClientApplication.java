@@ -14,12 +14,15 @@ public enum WebClientApplication {
 
     public void start() throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 10);
-        server.createContext("/pages/", new HtmlHandler());
-        server.createContext("/css/", new CssHandler());
+        //server.createContext("/pages/", new HtmlHandler());
+        server.createContext("/pages/", new CommonHttpHandler());
+        //server.createContext("/css/", new CssHandler());
+        server.createContext("/css/", new CommonHttpHandler());
         server.createContext("/js/", new JsHandler());
         server.createContext("/api/testget", new ApiGetTestHandler());
         server.createContext("/api/testpost", new ApiPostHandler());
-        server.createContext("/api/showCriminalById", new ShowCriminalByIdHandler());
+        //server.createContext("/api/showCriminalById", new ShowCriminalByIdHandler());
+        server.createContext("/api/showCriminalById", new CommonHttpHandler());
 
         server.start();
         String message = String.format("%s is running on port: %d", APP_NAME, server.getAddress().getPort() );
