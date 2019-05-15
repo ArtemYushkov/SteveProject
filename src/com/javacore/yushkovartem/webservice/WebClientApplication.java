@@ -23,6 +23,7 @@ public enum WebClientApplication {
         server.createContext("/api/testpost", new ApiPostHandler());
         //server.createContext("/api/showCriminalById", new ShowCriminalByIdHandler());
         server.createContext("/api/showCriminalById", new CommonHttpHandler());
+        server.createContext("/api/criminals", new ApiCriminalsHandler());
 
         server.start();
         String message = String.format("%s is running on port: %d", APP_NAME, server.getAddress().getPort() );

@@ -1,7 +1,7 @@
 package com.javacore.yushkovartem.profile;
 
 import com.javacore.yushkovartem.common.BaseModel;
-import com.javacore.yushkovartem.dbOld.Record;
+//import com.javacore.yushkovartem.dbOld.Record;
 
 import java.util.Date;
 
@@ -30,18 +30,18 @@ public class ProfileModel extends BaseModel {
 
     public ProfileModel() {};
 
-    public static ProfileModel modelFromRecord (Record record) throws Record.FieldNotFoundException {
-        ProfileModel model = new ProfileModel();
-        try {
-            model.setDeceased(record.getBoolean("deceased"))
-                    .setId(record.getInt("id"));
-
-
-        } catch (Exception e) {
-
-        }
-        return model;
-    }
+//    public static ProfileModel modelFromRecord (Record record) throws Record.FieldNotFoundException {
+//        ProfileModel model = new ProfileModel();
+//        try {
+//            model.setDeceased(record.getBoolean("deceased"))
+//                    .setId(record.getInt("id"));
+//
+//
+//        } catch (Exception e) {
+//
+//        }
+//        return model;
+  //  }
 
 
 

@@ -1,7 +1,6 @@
 package com.javacore.yushkovartem.dbservice.dbstate;
 
 import com.javacore.yushkovartem.dbservice.misc.DBConstants;
-import com.javacore.yushkovartem.dbservice.misc.DataEncryptor;
 import com.javacore.yushkovartem.dbservice.misc.Utils;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class DBStateStop extends DBState {
 
-    public DBStateStop(String name){
+    public DBStateStop(String name) {
         super(name);
     }
 
@@ -20,12 +19,7 @@ public class DBStateStop extends DBState {
         List<String> list = new ArrayList<>();
         list.add("test string one");
         list.add("test string two");
-        Utils.writeListToFile(list, DBConstants.DATA_DIR + "/test.dat", new DataEncryptor() {
-            @Override
-            public String encrypt(String text) {
-                return null;
-            }
-        });
+        Utils.writeListToFile(list, DBConstants.DATA_DIR + "/test.dat");
     }
 
     @Override

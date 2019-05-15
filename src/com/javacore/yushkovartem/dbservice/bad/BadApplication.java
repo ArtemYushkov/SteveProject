@@ -1,5 +1,7 @@
 package com.javacore.yushkovartem.dbservice.bad;
 
+import com.javacore.yushkovartem.dbservice.bad.BadClass;
+
 public class BadApplication {
 
     //ABOUT LAST ID;

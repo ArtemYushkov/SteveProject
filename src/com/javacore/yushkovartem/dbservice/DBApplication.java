@@ -1,13 +1,19 @@
 package com.javacore.yushkovartem.dbservice;
 
-import com.javacore.yushkovartem.dbservice.data.QueryResult;
+import com.javacore.yushkovartem.dbservice.data.Table;
+import com.javacore.yushkovartem.dbservice.data.query.QueryResult;
 import com.javacore.yushkovartem.dbservice.dbstate.DBState;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateInit;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateRunning;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateStop;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum DBApplication {
     INSTANCE;
+
+    private Map<String, Table> tables = new HashMap<>();
 
     public static final String DATA_ENCRYPTION_LEVEL = "LOW";
     private DBState currentState;
@@ -24,10 +30,12 @@ public enum DBApplication {
     }
 
     public QueryResult query(String query) {
-        return null;
+        return currentState.onQuery(query);
     }
 
-    public String getStateName() {return currentState.getName();}
+    public String getStateName() {
+        return currentState.getName();
+    }
 
     public void changeState(DBState state) {
         if (currentState != null) {
@@ -39,6 +47,14 @@ public enum DBApplication {
         }
         currentState = state;
         currentState.enter();
+    }
+
+    public void addTable(String tableName, Table table) {
+        tables.put(tableName, table);
+    }
+
+    public Table getTable(String tableName) {
+        return tables.get(tableName);
     }
 
 }

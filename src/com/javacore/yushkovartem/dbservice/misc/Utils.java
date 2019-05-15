@@ -11,6 +11,49 @@ import java.util.List;
 
 public class Utils {
 
+    public static void readStream(final InputStream inputStream, DataHandler handler) {
+        BufferedReader br;
+        try {
+            br = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = br.readLine()) != null) {
+                handler.handleString(line);
+            }
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static byte[] readBytes(String fileName) {
+        BufferedReader br;
+        FileInputStream fis = null;
+        byte[] b = null;
+        try {
+            fis = new FileInputStream(fileName);
+            b = new byte[fis.available()];
+            fis.read(b);
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        } finally {
+            try {
+                fis.close();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return b;
+    }
+
     public static void readFileLineByLine(String fileName, DataHandler handler) {
         FileInputStream fis = null;
         BufferedReader br;
@@ -49,7 +92,7 @@ public class Utils {
         readDir(dir, handler);
     }
 
-    public static void writeListToFile(List<String> list, String filePath, DataEncryptor encryptor) {
+    public static void writeListToFile(List<String> list, String filePath) {
         FileOutputStream fos = null;
         BufferedWriter bw = null;
         try {
@@ -57,7 +100,7 @@ public class Utils {
             bw = new BufferedWriter(new OutputStreamWriter(fos));
             for (String line: list) {
                 bw.newLine();
-                bw.write(encryptor.encrypt(line));
+                bw.write(line);
             }
             bw.flush();
             bw.close();

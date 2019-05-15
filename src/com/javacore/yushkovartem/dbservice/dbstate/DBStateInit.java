@@ -10,30 +10,21 @@ import com.javacore.yushkovartem.dbservice.server.DBServer;
 
 public class DBStateInit extends DBState {
 
-    // <начало>КОСТЫЛИЩЕ!
-    public static Table table;
-
-    public static Table getTable() {
-        return table;
-    }
-    //<конец> КОСТЫЛИЩЕ
-
 
     public DBStateInit(String name) {
         super(name);
     }
 
-
-
     @Override
     public void enter() {
         System.out.println("Entering DBInit state");
         initTables();
-        try{
+        try {
             DBServer.INSTANCE.start();
             DBApplication.INSTANCE.changeState(DBApplication.INSTANCE.stateRun);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            DBApplication.INSTANCE.changeState(DBApplication.INSTANCE.stateStop);
         }
     }
 
@@ -42,12 +33,9 @@ public class DBStateInit extends DBState {
             @Override
             public void handleFile(String filePath) {
                 TableMetaData metaData = TableMetaData.loadFromFile(filePath);
-                //<начало>КОСТЫЛИЩЕ продолжение
-                table = new Table(metaData);
-                //<конец> КОСТЫЛИЩЕ продолжение
-
-                //Table table = new Table(metaData); //раскомментить. Для КОСТЫЛИЩА.
+                Table table = new Table(metaData);
                 table.load();
+                DBApplication.INSTANCE.addTable(metaData.getTableName(), table);
             }
         });
     }

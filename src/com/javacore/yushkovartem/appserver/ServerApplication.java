@@ -1,6 +1,5 @@
 package com.javacore.yushkovartem.appserver;
 
-import com.javacore.yushkovartem.webservice.*;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
