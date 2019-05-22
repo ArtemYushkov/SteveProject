@@ -30,13 +30,13 @@ public class Application {
 
     public static void main(String[] args) {
 
-        try {
-            WebClientApplication.INSTANCE.start();
-            ServerApplication.INSTANCE.start();
+//        try {
+            //WebClientApplication.INSTANCE.start();
+            //ServerApplication.INSTANCE.start();
             DBApplication.INSTANCE.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
 //        ConsoleCanvas canvas = new ConsoleCanvas(50,50);

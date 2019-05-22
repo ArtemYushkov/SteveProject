@@ -6,11 +6,14 @@ import com.javacore.yushkovartem.dbservice.dbstate.DBState;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateInit;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateRunning;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateStop;
+import com.javacore.yushkovartem.dbservice.test.Test;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 public enum DBApplication {
+
     INSTANCE;
 
     private Map<String, Table> tables = new HashMap<>();
@@ -22,7 +25,17 @@ public enum DBApplication {
     public DBState stateStop = new DBStateStop("Shutting Down");
 
     public void start() {
-        changeState(stateInit);
+
+        boolean testEnabled = Boolean.valueOf(System.getProperty("et"));
+        if(testEnabled) {
+            try{
+                runTests("com.javacore.yushkovartem.dbservice.test.WHERETest");
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
+       // changeState(stateInit);
     }
 
     public void stop() {
@@ -55,6 +68,26 @@ public enum DBApplication {
 
     public Table getTable(String tableName) {
         return tables.get(tableName);
+    }
+
+    private void runTests(String className) throws Exception {
+        int passed = 0;
+        int failed = 0;
+
+        for (Method m : Class.forName(className).getMethods()){
+            Test test = m.getAnnotation(Test.class);
+            if(test != null && test.enabled()) {
+                try {
+                    m.invoke(null);
+                    passed++;
+                } catch (Throwable ex) {
+                    System.out.printf("WHERETest %s failed: %s \n", m, ex.getCause());
+                    failed++;
+                }
+            }
+        }
+
+        System.out.printf("Passed: %d, Failed %d%n", passed, failed);
     }
 
 }
