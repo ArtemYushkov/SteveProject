@@ -22,6 +22,7 @@ public class SELECTQueryProcessor implements QueryProcessor {
         QueryResult queryResult = new QueryResult();
         Matcher matcher = pattern.matcher(query);
         queryResult.status = QueryResult.Status.OK;
+
         if (matcher.find()) {
             String[] fields = matcher.group(3).split(",");
             String tableName = matcher.group(7);
@@ -41,6 +42,8 @@ public class SELECTQueryProcessor implements QueryProcessor {
 
         return queryResult;
     }
+
+
 
     private String collectedResultToString(List<List<String>> collectedResult) {
         String result = "";
