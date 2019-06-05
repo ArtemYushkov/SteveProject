@@ -1,7 +1,5 @@
 package com.javacore.yushkovartem.dbservice.data.query;
 
-import com.javacore.yushkovartem.dbservice.data.query.QueryProcessor;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,5 +20,3 @@ public class QueryProcessorRegister {
     }
 
 }
-
-//сделать енум

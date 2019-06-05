@@ -1,6 +1,6 @@
 package com.javacore.yushkovartem.command;
 
-import com.javacore.yushkovartem.Application;
+import com.javacore.yushkovartem.MainApplication;
 
 public class CommandAppName extends ACommand {
     public CommandAppName(String name) {
@@ -8,6 +8,6 @@ public class CommandAppName extends ACommand {
     }
 
     public void execute(){
-        System.out.println("My AppName is " + Application.APP_NAME);
+        System.out.println("My AppName is " + MainApplication.APP_NAME);
     }
 }

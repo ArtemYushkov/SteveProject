@@ -6,14 +6,14 @@ import com.javacore.yushkovartem.dbservice.dbstate.DBState;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateInit;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateRunning;
 import com.javacore.yushkovartem.dbservice.dbstate.DBStateStop;
-import com.javacore.yushkovartem.dbservice.test.Test;
+import com.javacore.yushkovartem.dbservice.server.DBServer;
+import com.javacore.yushkovartem.dbservice.test.*;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 public enum DBApplication {
-
     INSTANCE;
 
     private Map<String, Table> tables = new HashMap<>();
@@ -24,20 +24,20 @@ public enum DBApplication {
     public DBState stateRun = new DBStateRunning("Running");
     public DBState stateStop = new DBStateStop("Shutting Down");
 
-    public void start() {
-
+    public void start(int port) {
+        DBServer.PORT = port;
         boolean testEnabled = Boolean.valueOf(System.getProperty("et"));
-        if(testEnabled) {
-            try{
-                runTests("com.javacore.yushkovartem.dbservice.test.WHERETest");
-            } catch(Exception e){
+        if (testEnabled) {
+            try {
+                runTests("com.epam.javacore2019.steve2.dbservice.test.WHERETest");
+            }catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
-       // changeState(stateInit);
+        changeState(stateInit);
     }
 
+    @Deprecated
     public void stop() {
         currentState.onStop();
     }
@@ -71,23 +71,20 @@ public enum DBApplication {
     }
 
     private void runTests(String className) throws Exception {
-        int passed = 0;
-        int failed = 0;
-
-        for (Method m : Class.forName(className).getMethods()){
-            Test test = m.getAnnotation(Test.class);
-            if(test != null && test.enabled()) {
+        int passed = 0, failed = 0;
+        for (Method m : Class.forName(className).getMethods()) {
+            Test testAnnotation = m.getAnnotation(Test.class);
+            if (testAnnotation != null && testAnnotation.enabled()) {
                 try {
                     m.invoke(null);
+                    System.out.printf("\nTest %s PASSED ", m.getName());
                     passed++;
                 } catch (Throwable ex) {
-                    System.out.printf("WHERETest %s failed: %s \n", m, ex.getCause());
+                    System.out.printf("\nTest %s FAILED: %s ", m.getName(), ex.getCause());
                     failed++;
                 }
             }
         }
-
         System.out.printf("Passed: %d, Failed %d%n", passed, failed);
     }
-
 }

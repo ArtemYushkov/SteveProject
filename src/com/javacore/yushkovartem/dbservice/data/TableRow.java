@@ -24,8 +24,9 @@ public class TableRow {
         this.values.addAll(values);
     }
 
-    public void setValues(String[] values) {
+    public TableRow setValues(String[] values) {
         this.values = Arrays.asList(values);
+        return this;
     }
 
     public List<String> getValues() {

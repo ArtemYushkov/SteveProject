@@ -1,6 +1,6 @@
 package com.javacore.yushkovartem.command;
 
-import com.javacore.yushkovartem.Application;
+import com.javacore.yushkovartem.MainApplication;
 
 public class CommandVersion extends ACommand {
 
@@ -9,6 +9,6 @@ public class CommandVersion extends ACommand {
     }
 
     public void execute() {
-        System.out.println("My version is " + Application.VERSION);
+        System.out.println("My version is " + MainApplication.VERSION);
     }
 }

@@ -1,6 +1,5 @@
 package com.javacore.yushkovartem.dbservice.misc;
 
-import com.javacore.yushkovartem.Application;
 import com.javacore.yushkovartem.dbservice.DBApplication;
 
 public class MainDataEncryptor implements DataEncryptor {

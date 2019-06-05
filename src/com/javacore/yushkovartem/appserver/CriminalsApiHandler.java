@@ -13,7 +13,12 @@ public class CriminalsApiHandler implements HttpHandler  {
     @Override
     public void handle(HttpExchange httpExchange) {
         try {
-            String dbResult = requestDB();
+            String filterParams = httpExchange.getRequestURI().getQuery();
+            String whereString = null;
+            if (filterParams != null) {
+                whereString = buildWhereString(filterParams);
+            }
+            String dbResult = requestDB(whereString);
             httpExchange.getResponseHeaders().put("Content-Type", Arrays.asList(new String[]{"text/plain"}));
             httpExchange.sendResponseHeaders(200, 0);
             OutputStream os = httpExchange.getResponseBody();
@@ -25,7 +30,17 @@ public class CriminalsApiHandler implements HttpHandler  {
         }
     }
 
-    private String requestDB() throws Exception {
+    private String buildWhereString(String urlQuery) {
+        urlQuery = urlQuery.replaceAll("&", " AND ");
+        urlQuery = urlQuery.replaceAll("!OR!", " OR ");
+        urlQuery = urlQuery.replaceAll("!GT!", ">");
+        urlQuery = urlQuery.replaceAll("!LT!", "<");
+        urlQuery = urlQuery.replaceAll("!LIKE!", " LIKE ");
+
+        return " WHERE " + urlQuery;
+    }
+
+    private String requestDB(String whereString) throws Exception {
         URL url = new URL("http://localhost:6701/api/query");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
@@ -42,7 +57,10 @@ public class CriminalsApiHandler implements HttpHandler  {
                 "deceased," +
                 "dateOfDeath," +
                 "numberOfCrimes" +
-                  " FROM Criminals";
+            " FROM Criminals";
+        if (whereString != null) {
+            query += whereString;
+        }
         os.write(query.getBytes());
         os.close();
 

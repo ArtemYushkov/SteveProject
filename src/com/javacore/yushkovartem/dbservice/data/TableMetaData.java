@@ -5,7 +5,9 @@ import com.javacore.yushkovartem.dbservice.misc.Utils;
 import com.javacore.yushkovartem.dbservice.misc.DBConstants;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TableMetaData {
 
@@ -92,6 +94,14 @@ public class TableMetaData {
 
     public List<TableColumn> getColumns() {
         return columns;
+    }
+
+    public List<String> getColumnNames() {
+        List<String> names = new ArrayList<>();
+        for (TableColumn column: columns) {
+            names.add(column.getName());
+        }
+        return names;
     }
 
     @Override

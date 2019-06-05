@@ -1,22 +1,22 @@
 package com.javacore.yushkovartem.appserver;
 
+import com.javacore.yushkovartem.webservice.*;
 import com.sun.net.httpserver.HttpServer;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
-public enum  ServerApplication {
+public enum ServerApplication  {
     INSTANCE;
 
-    public static final int PORT = 6702;
-    public static final String APP_NAME = "Web Client Service";
+    public static int PORT;
+    public static final String APP_NAME = "Application Service";
 
-
-    public void start() throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 10);
-        server.createContext("/api/criminals", new CriminalsApiHandler() ); //criminals/{id}
+    public void start(int port) throws Exception {
+        HttpServer server = HttpServer.create(new InetSocketAddress(port), 10 );
+        PORT = port;
+        server.createContext("/api/criminals", new CriminalsApiHandler()); //criminals/{id}
         server.start();
-        String message = String.format("%s is running on port: %d", APP_NAME, server.getAddress().getPort() );
+        String message = String.format("%s is running on port: %d", APP_NAME, server.getAddress().getPort());
         System.out.println(message);
     }
 }
