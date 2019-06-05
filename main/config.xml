@@ -2,17 +2,17 @@
 <applications>
     <application
         name="DATABASE"
-        class="com.epam.javacore2019.steve2.dbservice.DBApplication"
+        class="com.javacore.yushkovartem.dbservice.DBApplication"
         port="6701"
     />
     <application
         name="WEBCLIENT"
-        class="com.epam.javacore2019.steve2.webservice.WebClientApplication"
+        class="com.javacore.yushkovartem.webservice.WebClientApplication"
         port="6703"
     />
     <application
         name="APPSERVER"
-        class="com.epam.javacore2019.steve2.appserver.ServerApplication"
+        class="com.javacore.yushkovartem.appserver.ServerApplication"
         port="6702"
     />
 </applications>

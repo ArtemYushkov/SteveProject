@@ -1,8 +1,8 @@
 <webclient>
     <handlers>
-        <handler path="/pages/" class="com.epam.javacore2019.steve2.webservice.HtmlHandler"></handler>
-        <handler path="/css/" class="com.epam.javacore2019.steve2.webservice.CssHandler"></handler>
-        <handler path="/js/" class="com.epam.javacore2019.steve2.webservice.JsHandler"></handler>
-        <handler path="/api/criminals" class="com.epam.javacore2019.steve2.webservice.ApiCriminalsHandler"></handler>
+        <handler path="/pages/" class="com.javacore.yushkovartem.webservice.HtmlHandler"></handler>
+        <handler path="/css/" class="com.javacore.yushkovartem.webservice.CssHandler"></handler>
+        <handler path="/js/" class="com.javacore.yushkovartem.webservice.JsHandler"></handler>
+        <handler path="/api/criminals" class="com.javacore.yushkovartem.webservice.ApiCriminalsHandler"></handler>
     </handlers>
 </webclient>
